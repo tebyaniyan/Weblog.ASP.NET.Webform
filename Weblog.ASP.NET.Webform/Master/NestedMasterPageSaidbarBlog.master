@@ -1,0 +1,59 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Master/Master.Master" AutoEventWireup="true" CodeBehind="NestedMasterPageSaidbarBlog.master.cs" Inherits="Weblog.ASP.NET.Webform.Master.NestedMasterPageSaidbarBlog" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
+        <div class="col-md-4">
+
+                <!-- Blog Search Well -->
+                <div class="well">
+                    <h4>جستجو در وبلاگ</h4>
+                    <div class="input-group">
+                        <asp:TextBox ID="txtSarch" runat="server" class="form-control" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" runat="server" id="btnSarch" onserverclick="btnSarch_ServerClick">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                    <!-- /.input-group -->
+                </div>
+
+                <!-- Blog Categories Well -->
+                <div class="well">
+                    <h4>دسته بندی های وبلاگ</h4>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">
+                                <asp:LinqDataSource ID="dsListLoadGroup" runat="server" OnSelecting="dsListLoadGroup_Selecting"></asp:LinqDataSource>
+                                <asp:Repeater ID="rptListLoadGroup" runat="server" DataSourceID="dsListLoadGroup">
+                                    <ItemTemplate>
+                                        <li><a href='<%# string.Format("/group/{0}/{1}",Eval("NewsGroupID"),Eval("TitleGroup")).Replace(" ","-").Replace("?","").Replace("؟","") %>' target="_blank"><%#Eval("TitleGroup") %></a>
+                                        </li>
+
+                                    </ItemTemplate>
+                                </asp:Repeater>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </div>
+
+                <!-- Side Widget Well -->
+                <div class="well">
+                    <h4>درباره ما</h4>
+                    <p>
+ام اس پی سافت در ۲۲ اسفند سال ۱۳۸۹ با محوریت آموزش برنامه نویسی و انتشار پروژه های برنامه نویسی شروع به کار کرد که پس از چند ماه موضوعاتی همچون آموزش های تصویری و دوره های آنلاین هم به ام اس پی سافت اضافه شد. در حال حاضر چندین نویسنده و برنامه نویس در ام اس پی سافت فعالیت می‌کنند.
+
+
+                    </p>
+                </div>
+
+            </div>
+        <asp:ContentPlaceHolder id="SubMasterContent" runat="server">
+           <!-- Blog Sidebar Widgets Column -->
+        
+    </asp:ContentPlaceHolder>
+
+       
+</asp:Content>

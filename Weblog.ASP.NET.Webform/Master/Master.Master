@@ -1,0 +1,185 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master.master.cs" Inherits="Weblog.ASP.NET.Webform.Master.Master" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>وبلاگ ام اس پی سافت</title>
+    <meta name="Description" content="وبلاگ" />
+    <meta name="Keywords" content="پروژه وب سایت وبلاگ" />
+
+
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta property="og:title" content="وبلاگ" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="/" />
+    <meta property="og:image" content="/" />
+    <meta property="og:site_name" content="وبلاگ" />
+    <meta property="og:locale" content="fa-IR" />
+    <link rel="publisher" href="#" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Masoud SharifiPour" />
+    <meta name="copyright" content="copyright 2017" />
+
+
+
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="/Master/css/bootstrap-rtl.css" rel="stylesheet" />
+    <link href="/Master/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="/Master/css/sb-admin.css" rel="stylesheet" />
+    <script src="/Master/js/jquery-1.10.2.js"></script>
+    <script src="/Master/js/bootstrap.min.js"></script>
+    <script src="/Master/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="/Master/js/sb-admin.js"></script>
+    <script src="/Content/loadingoverlay.js"></script>
+    <script src="/Content/loadingoverlay_progress.min.js"></script>
+    <link href="/Master/Content/css/logo-nav.css" rel="stylesheet" />
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/Image/ico/apple-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="/Image/ico/apple-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/Image/ico/apple-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/Image/ico/apple-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/Image/ico/apple-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="/Image/ico/apple-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/Image/ico/apple-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/Image/ico/apple-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/Image/ico/apple-icon-180x180.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/Image/ico/android-icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/Image/ico/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/Image/ico/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/Image/ico/favicon-16x16.png" />
+    <link rel="manifest" href="/Image/ico/manifest.json" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-TileImage" content="/Image/ico/ms-icon-144x144.png" />
+    <meta name="theme-color" content="#ffffff" />
+
+
+
+
+
+
+</head>
+<body>
+    <form id="form1" runat="server">
+
+
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/Default.aspx">
+                        <img src="https://dl.mspsoft.com/img/2018/04/edited/Logo.png" alt="وبلاگ" />
+
+                    </a>
+
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                    <ul class="nav navbar-nav">
+                        <li><a href="/About.aspx">ما چطور کار میکنیم؟</a></li>
+                        <li><a href="/ContactUS.aspx">ارتباط با ما</a></li>
+                    </ul>
+                    <div class="pull-left">
+                        <asp:LoginView runat="server" ID="logv">
+                            <AnonymousTemplate>
+                                <a href="../Login.aspx" class="btn btn-success navbar-btn">ورود</a>
+
+                            </AnonymousTemplate>
+                            <LoggedInTemplate>
+
+                                <br />
+
+                                <asp:LinkButton ID="lbSigOut" runat="server" CssClass="btn btn-primary btn-xs" CausesValidation="False" OnClick="lbSigOut_Click">خروج</asp:LinkButton>
+
+                            </LoggedInTemplate>
+                            <RoleGroups>
+                                <asp:RoleGroup Roles="admin">
+                                    <ContentTemplate>
+                                        <br />
+                                        <a href="/AdminPanel/News.aspx" class="btn btn-primary btn-xs">ورود به پنل مدیریت</a>
+                                        <asp:LinkButton ID="lbSigOut" runat="server" CssClass="btn btn-primary btn-xs" CausesValidation="False" OnClick="lbSigOut_Click">خروج</asp:LinkButton>
+                                        <asp:LoginName ID="LoginName1" runat="server" CssClass="btn btn-default btn-xs" FormatString="{0} , خوش آمدید" />
+                                    </ContentTemplate>
+                                </asp:RoleGroup>
+                          
+                            </RoleGroups>
+                        </asp:LoginView>
+
+                    </div>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+
+
+        <div style="display: none">
+            <div class="social-icons">
+
+                <a class="ttip-none" title="Google+" href="#" target="_blank">
+                    <i class="fa fa-google-plus"></i>
+
+                </a>
+                <a class="ttip-none" title="Facebook" href="#" target="_blank">
+                    <i class="fa fa-facebook"></i>
+
+                </a>
+                <a class="ttip-none" title="Twitter" href="#" target="_blank"><i class="fa fa-twitter"></i>
+
+                </a>
+                <a class="ttip-none" title="instagram" href="#" target="_blank"><i class="fa fa-instagram"></i>
+                </a>
+            </div>
+
+        </div>
+        <div class="container topmargin">
+
+            <div class="row">
+                <asp:ContentPlaceHolder ID="cphMain" runat="server">
+                </asp:ContentPlaceHolder>
+
+            </div>
+            <div class="clearfix"></div>
+            <br />
+            <br />
+            <footer class="text-center bg-lightgray">
+
+                <div class="copyrights  ">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                طراحی و برنامه نویسی ام اس پی سافت
+               
+                        <br />
+                                <div class="text">
+
+                                    <!-- collaborator -->
+                                    تمام حقوق برای <a href="http://mspsoft.com" target="_blank">ام اس پی سافت</a> محفوظ است.                        
+                            <i class="fa fa-code"></i>با <span><i class="fa fa-heart"></i></span>در <a href="http://mspsoft.com" target="_blank">ام اس پی سافت</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+
+        </div>
+
+
+    </form>
+</body>
+</html>

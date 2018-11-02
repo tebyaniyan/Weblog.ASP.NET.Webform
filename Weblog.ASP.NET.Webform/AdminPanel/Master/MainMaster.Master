@@ -1,0 +1,221 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MainMaster.master.cs" Inherits="Weblog.ASP.NET.Webform.AdminPanel.Master.MainMaster" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="/AdminPanel/Master/css/bootstrap-rtl.css" rel="stylesheet" />
+    <link href="/AdminPanel/Master/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="/AdminPanel/Master/css/sb-admin.css" rel="stylesheet" />
+    <script src="/AdminPanel/Master/js/jquery-1.10.2.js"></script>
+    <script src="/AdminPanel/Master/js/bootstrap.min.js"></script>
+    <script src="/AdminPanel/Master/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="/AdminPanel/Master/js/sb-admin.js"></script>
+
+
+      <script src="/Master/ckeditor/ckeditor.js"></script>
+    <script src="/Master/ckeditor/adapters/jquery.js"></script>
+
+    <script>
+        $(function () {
+            
+            $('#CKEditor1').ckeditor(config);
+
+        });
+
+    </script>
+
+
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <div id="wrapper">
+            <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/" target="_blank">پنل مدیریت  وبلاگ</a>
+                </div>
+                <!-- /.navbar-header -->
+
+                <ul class="nav navbar-top-links navbar-left">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-envelope fa-fw"></i><i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-messages">
+                            <asp:LinqDataSource ID="dsListContactUS" runat="server" OnSelecting="dsListContactUS_Selecting"></asp:LinqDataSource>
+                            <asp:Repeater ID="rptShowContact" runat="server" DataSourceID="dsListContactUS">
+                                <ItemTemplate>
+                                    <li>
+                                        <a href="#">
+                                            <div>
+                                                <strong><%# Eval("FullName")%></strong>
+                                                <span class="pull-right text-muted">
+                                                    <em>
+                                                        <%# Eval("Date", "{0:MM/dd/yyyy}") %>
+                                                    </em>
+                                                </span>
+                                            </div>
+                                            <div>
+                                                <%# Eval("Description")%>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="divider"></li>
+                                </ItemTemplate>
+                            </asp:Repeater>
+                            <li>
+                                <a class="text-center" href="#">
+                                    <strong>پیام ها</strong>
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- /.dropdown-messages -->
+                    </li>
+                 
+                  <%--  <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-bell fa-fw"></i><i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-alerts">
+                            <li>
+                                <a href="#">
+                                    <div>
+                                        <i class="fa fa-comment fa-fw"></i>New Comment
+                                    <span class="pull-left text-muted small">4 minutes ago</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <div>
+                                        <i class="fa fa-twitter fa-fw"></i>3 New Followers
+                                    <span class="pull-left text-muted small">12 minutes ago</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <div>
+                                        <i class="fa fa-envelope fa-fw"></i>Message Sent
+                                    <span class="pull-left text-muted small">4 minutes ago</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <div>
+                                        <i class="fa fa-tasks fa-fw"></i>New Task
+                                    <span class="pull-left text-muted small">4 minutes ago</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <div>
+                                        <i class="fa fa-upload fa-fw"></i>Server Rebooted
+                                    <span class="pull-left text-muted small">4 minutes ago</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a class="text-center" href="#">
+                                    <strong>See All Alerts</strong>
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- /.dropdown-alerts -->
+                    </li>
+                    <!-- /.dropdown -->--%>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li class="divider"></li>
+                            <li><a href="/LogOut.aspx"><i class="fa fa-sign-out fa-fw"></i>خروج</a>
+                            </li>
+                        </ul>
+                        <!-- /.dropdown-user -->
+                    </li>
+                    <!-- /.dropdown -->
+                </ul>
+                <!-- /.navbar-top-links -->
+
+                <div class="navbar-default navbar-static-side" role="navigation">
+                    <div class="sidebar-collapse">
+                        <ul class="nav" id="side-menu">
+                         
+                            <li>
+                                <a href="/AdminPanel/News.aspx"><i class="fa fa-dashboard fa-fw"></i>صفحه اصلی مدیریت</a>
+                            </li>
+                      
+                            <li>
+                                <a href="/AdminPanel/User/User.aspx"><i class="fa fa-table fa-fw"></i>مدیریت کاربران</a>
+                            </li>
+                            <li>
+                                <a href="/AdminPanel/User/Role.aspx"><i class="fa fa-table fa-fw"></i>سطح دسترسی</a>
+                            </li>
+
+                                 <li>
+                                <a href="#"><i class="fa fa-plane fa-fw"></i>وبلاگ<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="/AdminPanel/News.aspx">پست های وبلاگ</a>
+                                    </li>
+                                      <li>
+                                        <a href="/AdminPanel/Group.aspx">دسته بندی ها</a>
+                                    </li>
+                                      <li>
+                                        <a href="/AdminPanel/Comment.aspx">نظرات ثبت شده</a>
+                                    </li>
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
+
+                      <%--      <li>
+                                <a href="#"><i class="fa fa-files-o fa-fw"></i>Sample Pages<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="blank.html">Blank Page</a>
+                                    </li>
+                                    <li>
+                                        <a href="login.html">Login Page</a>
+                                    </li>
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>--%>
+                        </ul>
+                        <!-- /#side-menu -->
+                    </div>
+                    <!-- /.sidebar-collapse -->
+                </div>
+                <!-- /.navbar-static-side -->
+            </nav>
+            <div id="page-wrapper">
+                <asp:ContentPlaceHolder ID="cphMainAdmin" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+
+
+    </form>
+</body>
+</html>
